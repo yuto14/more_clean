@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   root "articles#top"
 
-  resources :users, only:[:show]
+  resources :users, only:[:show, :edit, :update]
 
 end
