@@ -1,0 +1,23 @@
+<h3>登録情報を変更する</h3>
+
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+  <%= f.label :名前　%>
+  <%= f.text_field :name %>
+
+  <%= f.label :プロフィール写真 %>
+  <%= f.attachment_field :profile_image %>
+
+  <%= f.label :紹介文 %>
+  <%= f.text_field :introduction %>
+
+  <%= f.label :住所　%>
+  <%= f.text_field :address %>
+
+  <%= f.submit "編集する" %>
+<% end %>
