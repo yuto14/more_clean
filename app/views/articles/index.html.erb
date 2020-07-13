@@ -1,0 +1,20 @@
+<h3>記事一覧</h3>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>タイトル</th>
+        <th>ユーザー名</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= attachment_image_tag article, :article_image, format: "jgeg", follback: "l_e_others_470.jpeg", size: "100x100" %></td>
+        <td><%= link_to "#{article.title}", article_path(article) %></td>
+        <td><%= article.user.name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>

@@ -4,6 +4,10 @@ class ArticlesController < ApplicationController
         @user = current_user
     end
 
+    def index
+        @articles = Article.all
+    end
+
     def new
         @article = Article.new
     end
@@ -21,7 +25,7 @@ class ArticlesController < ApplicationController
     def show
         @article = Article.find(params[:id])
     end
-    
+
     private
 
     def article_params
