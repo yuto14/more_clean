@@ -13,7 +13,7 @@
       <tr>
         <td><%= attachment_image_tag article, :article_image, format: "jgeg", follback: "l_e_others_470.jpeg", size: "100x100" %></td>
         <td><%= link_to "#{article.title}", article_path(article) %></td>
-        <td><%= article.user.name %></td>
+        <td><%= link_to "#{article.user.name}", user_path(article.user) %></td>
       </tr>
       <% end %>
     </tbody>
