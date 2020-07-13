@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MoreClean</title>
+    <title>more clean</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,14 +11,25 @@
 
   <body>
     <header>
-    <% if user_signed_in? %>
-      <%= link_to "マイページ", user_path(current_user) %>
-      <%= link_to "記事を書く", new_article_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "マイページ", user_path(current_user) %></li>
+            <li><%= link_to "記事一覧", articles_path %>
+            <li><%= link_to "記事を書く", new_article_path %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "記事一覧", articles_path %></li>
+            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
     </header>
-    <%= yield %>
+    <main>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
