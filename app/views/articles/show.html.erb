@@ -5,3 +5,8 @@
 <p><%= attachment_image_tag @article, :article_image, format: "jpeg", fallback: "l_e_others_470.jpg", size: "300x300" %></p>
 
 <p><%= @article.text %>
+
+<% if @article.user == current_user %>
+  <p><%= link_to "編集する", edit_article_path(@article) %></p>
+  <p><%= link_to "削除する", article_path(@article), method: :delete, data: {confirm: "本当に削除してもよいですか？"} %></p>
+<% end %>

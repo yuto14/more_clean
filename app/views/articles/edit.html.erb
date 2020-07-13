@@ -1,4 +1,4 @@
-<h3>新規投稿</h3>
+<h3>記事を編集する</h3>
 
 <% if @article.errors.any? %>
   <% @article.errors.full_messages.each do |message| %>
@@ -17,5 +17,5 @@
   <p><%= f.label :本文  %>
   <%= f.text_field :text %></p>
 
-  <p><%= f.submit "投稿する" %></p>
+  <p><%= f.submit "編集する" %></p>
 <% end %>
