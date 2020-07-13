@@ -1,0 +1,7 @@
+<h3>記事詳細</h3>
+
+<p>タイトル <%= @article.title %></p>
+
+<p><%= attachment_image_tag @article, :article_image, format: "jpeg", fallback: "l_e_others_470.jpg", size: "300x300" %></p>
+
+<p><%= @article.text %>
