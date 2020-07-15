@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root "articles#top"
 
   resources :users, only:[:show, :edit, :update]
-  resources :articles
+  resources :articles do
+    resources :article_comments, only:[:create, :destroy]
+  end
 
 end
