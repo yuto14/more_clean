@@ -21,8 +21,8 @@
           <% end %></td>
         </tr>
         <% if @user == current_user %>
-          <tr> 
-            <td colspan="2"><%= link_to "編集", edit_user_path, class: "btn btn-default  center-block" %></td>
+          <tr class="text-center"> 
+            <td colspan="2"><%= link_to "編集する", edit_user_path, class: "btn btn-default" %></td>
           </tr>
         <% end %>
       </table>
@@ -37,13 +37,17 @@
             <th></th>
             <th>タイトル</th>
             <th>ユーザー名</th>
+            <th>コメント数</th>
+            <th>いいね数</th>
           </thead>
           <tbody>
             <% @articles.each do |article| %>
               <tr>
-                <td><p><%= attachment_image_tag article, :article_image, format: "jpeg", size: "80x80", follback: "l_e_others_470.jpg" %></p></td>
+                <td><p><%= attachment_image_tag article, :article_image, format: "jpeg", size: "80x80" %></p></td>
                 <td><p><%= link_to "#{article.title.truncate(30)}", article_path(article) %><p></td>
                 <td><p><%= article.user.name %></p></td>
+                <td><p><%= article.article_comments.count %></p></td>
+                <td><p><%= article.favorites.count %></p></td>
               </tr>
             <% end %>
           </tbody>
