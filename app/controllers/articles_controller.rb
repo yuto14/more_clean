@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
     
     def top
-        @user = current_user
+        render layout: "layout_top"
     end
 
     def index
