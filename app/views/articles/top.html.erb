@@ -1,5 +1,11 @@
-トップ画面
-
-<% if user_signed_in? %>
-  <%= link_to "マイページ", user_path(current_user) %>
-<% end %>
+<div class="row col-xs-12">
+  <h1 class="title text-center">more clean</h1>
+  <div class="row col-xs-5 col-xs-offset-7">
+    <p>このサイトは掃除に関する情報を共有できるサイトになっています。</p>
+    <ul>
+      <li><%= link_to "記事一覧", articles_path %></li>
+      <li><%= link_to "ログイン", new_user_session_path %></li>
+      <li><%= link_to "新規登録", new_user_registration_path %></li>
+    </ul>
+  </div>
+</div>
