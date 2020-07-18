@@ -1,11 +1,15 @@
 class ArticlesController < ApplicationController
-    
     def top
         render layout: "layout_top"
     end
 
     def index
         @articles = Article.all
+    end
+
+    # 記事をいいね数順に表示するため、いいねテーブルのarticle_idをカウントし多い順に並びかえる
+    def ranking
+        @articles_rank = Article.find(Favorite.group(:article_id).order('count(article_id) desc').pluck(:article_id))
     end
 
     def show
