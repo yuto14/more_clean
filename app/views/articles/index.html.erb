@@ -1,11 +1,13 @@
-<h3>記事一覧</h3>
 
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
-  <% if @search_articles %>
-    <%= render "article_table", articles: @search_articles %>
-  <% else %>
-    <%= render "article_table", articles: @articles %>
-  <% end %>
+    <!-- 検索フォーム入力時に検索結果を表示 -->
+    <% if @search_articles == @articles %>
+      <h3>記事一覧</h3>
+      <%= render "article_table", articles: @articles %>
+    <% else %>
+      <h3>検索結果</h3>
+      <%= render "article_table", articles: @search_articles %>
+    <% end %>
   </div>
 </div>

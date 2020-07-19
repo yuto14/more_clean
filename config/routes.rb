@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :articles do
     resources :article_comments, only:[:create, :destroy]
     resource :favorites, only:[:create, :destroy]
+    collection do
+      get 'ranking'
+    end
   end
 
 end
