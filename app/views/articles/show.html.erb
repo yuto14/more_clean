@@ -8,7 +8,7 @@
     <% end %>
     <p><%= attachment_image_tag @article, :article_image, format: "jpeg", fallback: "l_e_others_470.jpg", size: "300x300" %></p>
     <p> <% @article.tag_list.each do |tag_list| %>
-          <span class="label label-info"><%= tag_list %></span>
+          <span class="label label-info"><%= link_to "#{tag_list}", tag_articles_path(tag_name: tag_list) %></span>
         <% end %>
     </p>
     <p><%= safe_join(@article.text.split("\n"), tag(:br)) %></p>

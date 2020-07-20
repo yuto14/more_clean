@@ -17,7 +17,7 @@
           <td><p><%= link_to "#{article.title.truncate(30)}", article_path(article) %><p></td>
           <td><p><%= link_to "#{article.user.name}", user_path(article.user) %><p></td>
           <td><p><% article.tag_list.each do |tag_list| %>
-                   <span class="label label-info"><%= tag_list %></span>
+                   <span class="label label-info"><%= link_to "#{tag_list}", tag_articles_path(tag_name: tag_list) %></span>
                   <% end %></p></td>
           <td><p><%= article.article_comments.count %></p></td>
           <td><p><%= article.favorites.count %> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></p></td>

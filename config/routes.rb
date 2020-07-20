@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create, :destroy]
     collection do
       get 'ranking'
+      get 'tag'
     end
   end
 
