@@ -7,14 +7,19 @@ class ArticlesController < ApplicationController
         @articles = Article.all
     end
 
+    def show
+        @article = Article.find(params[:id])
+        @article_comment = ArticleComment.new
+    end
+
     # 記事をいいね数順に表示するため、いいねテーブルのarticle_idをカウントし多い順に並びかえる
     def ranking
         @articles_rank = Article.find(Favorite.group(:article_id).order('count(article_id) desc').pluck(:article_id))
     end
 
-    def show
-        @article = Article.find(params[:id])
-        @article_comment = ArticleComment.new
+    # タグ名で記事を絞り込み
+    def tag
+        @tag_articles = Article.tagged_with(params[:tag_name])
     end
 
     def new
@@ -53,7 +58,7 @@ class ArticlesController < ApplicationController
     private
 
     def article_params
-        params.require(:article).permit(:title, :article_image, :text)
+        params.require(:article).permit(:title, :article_image, :text, :tag_list)
     end
 
 end

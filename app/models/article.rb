@@ -8,6 +8,8 @@ class Article < ApplicationRecord
 
     validates :title, :text,   presence: true
 
+    acts_as_taggable
+
     def favorited_by?(user)
         favorites.where(user_id: user.id).exists?
     end
