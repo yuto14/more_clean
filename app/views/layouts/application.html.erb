@@ -11,29 +11,34 @@
 
   <body>
     <header class="container-fluid">
-      <nav class="row col-xs-12">
-      <h1><%= link_to "more clean", root_path %></h1>
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li><%= link_to "マイページ", user_path(current_user) %></li>
-            <li><%= link_to "記事一覧", articles_path %>
-            <li><%= link_to "いいねランキング", ranking_articles_path %>
-            <li><%= link_to "記事を書く", new_article_path %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "記事一覧", articles_path %></li>
-            <li><%= link_to "新規登録", new_user_registration_path %></li>
-            <li><%= link_to "ログイン", new_user_session_path %></li>
-          <% end %>
-        </ul>
-      </nav>
+      <div class="row col-xs-12">
+        <nav class="nav navbar-nav navbar-left">
+          <h1 class="header-title"><%= link_to "more clean", root_path %></h1>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to "マイページ", user_path(current_user) %></li>
+              <li><%= link_to "記事一覧", articles_path %>
+              <li><%= link_to "いいねランキング", ranking_articles_path %>
+              <li><%= link_to "記事を書く", new_article_path %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "記事一覧", articles_path %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
       <div class="row col-xs-12 text-right">
         <%= search_form_for(@search, url: articles_path ) do |f| %>
           <%= f.text_field :title_cont, placeholder: "タイトルを入力..." %>
-          <%= f.submit "検索する" %>
+          <%= f.submit "検索する", class: "btn btn-default btn-xs" %>
         <% end %>
       </div>
     </header>
+    
     <main>
       <div class="container-fluid">
         <%= yield %>
