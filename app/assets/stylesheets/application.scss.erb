@@ -17,6 +17,32 @@
 @import "bootstrap";
 
 header {
+    padding-bottom: 1%;
+    background-color: rgba( 0, 0, 0, 0.5);
+    font-color: white;
+}
+
+.nav > li > a:hover {
+    color: black;
+}
+
+.header-title {
+    font-size: 350%;
+    font-family: "HanziPen TC", "Comic Sans Ms", "Times New Roman", "Bradley Hand", sans-serif;
+}
+
+.header-title > a, .nav > li > a {
+    color: white; 
+}
+
+body {
+    background-image: url(<%= asset_path("radio-4109368.jpg") %>);
+    background-size: cover;
+    background-position: center;
+    font-family: "YuGothic","Hiragino Kaku Gothic ProN", 'ヒラギノ角ゴ ProN W3', sans-serif ;
+}
+
+main {
     padding-bottom: 2%;
 }
 
@@ -25,6 +51,15 @@ header {
     margin-bottom: 3%;
 }
 
-main {
-    padding-bottom: 2%;
+table {
+    background-color: white;
+    border-radius: 10px;
+}
+
+a {
+    color: black;
+}
+
+.label > a {
+    color: white;
 }
