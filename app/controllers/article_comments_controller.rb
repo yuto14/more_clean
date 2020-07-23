@@ -5,10 +5,7 @@ class ArticleCommentsController < ApplicationController
         @article_comment = ArticleComment.new(article_comment_params)
         @article_comment.user_id = current_user.id
         @article_comment.article_id = @article.id
-        if @article_comment.save
-        else
-            render "articles/show"
-        end
+        @article_comment.save
     end
 
     def destroy
