@@ -11,7 +11,7 @@
 
     <div class="field form-group">
       <%= f.label :住所 %>
-      <%= f.text_field :address, placeholder: "都道府県のみ", class: "form-control" %>
+      <%= f.select :address, User.addresses.keys,{}, class: "form-control" %>
     </div>
 
     <div class="field form-group">

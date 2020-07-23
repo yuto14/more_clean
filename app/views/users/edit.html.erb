@@ -7,26 +7,26 @@
 <% end %>
 
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1 text-center">
+  <div class="col-xs-4 col-xs-offset-4">
     <%= form_for(@user) do |f| %>
       <div class="form-group">
         <p><%= f.label :名前　%></p>
-        <p><%= f.text_field :name %></p>
+        <p><%= f.text_field :name, class: "form-control" %></p>
       </div>
 
       <div class="form-group">
         <p><%= f.label :プロフィール写真 %></p>
-        <p><%= f.attachment_field :profile_image, class: "center-block" %></p>
+        <p><%= f.attachment_field :profile_image %></p>
       </div>
 
       <div class="form-group">
         <p><%= f.label :紹介文 %></p>
-        <p><%= f.text_area :introduction, :size=>"40x10"%></p>
+        <p><%= f.text_area :introduction, :size=>"40x5", class: "form-control" %></p>
       </div>
 
       <div class="form-group">
         <p><%= f.label :住所　%></p>
-        <p><%= f.text_field :address %></p>
+        <p><%= f.select :address, User.addresses.keys,{}, class: "form-control"%></p>
       </div>
       
       <p><%= f.submit "編集する", class: "btn btn-default center-block" %></p>
