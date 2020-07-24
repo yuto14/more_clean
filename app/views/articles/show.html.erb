@@ -5,9 +5,11 @@
     
     <div class="show-title">
       <h3>タイトル ： <%= @article.title %></h3>
+      <p> 投稿者 ： <%= @article.user.name %></p>
       <p> 作成日 ： <%= @article.created_at.strftime("%Y/%m/%d") %></p>
     </div>
 
+    <!-- いいね数 -->
     <div id="favorite-count">
       <%= render "layouts/favorite_count", article: @article %>
     </div>
@@ -21,6 +23,7 @@
 
     <p class="article-text"><%= safe_join(@article.text.split("\n"), tag(:br)) %></p>
 
+    <!-- いいねする、いいね解除ボタン -->
     <div id="favorite">
       <%= render "layouts/favorite", article: @article %>
     </div>
@@ -33,32 +36,22 @@
 </div>
 
 
-<!-- 以下コメント機能 -->
 <div class="row col-xs-10 col-xs-offset-1">
   <h3>コメント</h3>
-
+  
+  <!--　コメントのエラーメッセージ -->
   <div id="comment-error">
   </div>
 
+  <!-- コメント一覧 -->
   <div class="row col-xs-10 col-xs-offset-1">
     <div id="comments-area">
       <%= render "layouts/comments", article: @article%>
     </div>
   </div>
 
-  <% if user_signed_in? %>
-    <%= form_for [@article, @article_comment], remote: true do |f| %>
-      <div class="row">
-
-        <div class="col-xs-7 col-xs-offset-3 form-group">
-          <%= f.text_area :comment, class: "form-control" %>
-        </div>
-        
-        <div class="col-xs-2 from-group">
-          <%= f.submit "コメントする", class: "btn-sm btn-default" %>
-        </div>
-
-      </div>
-    <% end %>
-  <% end %>
+  <!-- コメント投稿　-->
+  <div id="comment-area">
+    <%= render "layouts/comment_area", article: @article, article_comment: @article_comment %>
+  </div>
 </div>
