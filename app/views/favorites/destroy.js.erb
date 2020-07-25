@@ -1,2 +1,2 @@
-$('#favorite-count').html("<%= j(render "articles/favorite_count", article: @article) %>");
-$('#favorite').html("<%= j(render "articles/favorite", article: @article) %>");
+$('#favorite-count').html("<%= j(render "layouts/favorite_count", article: @article) %>");
+$('#favorite').html("<%= j(render "layouts/favorite", article: @article) %>");

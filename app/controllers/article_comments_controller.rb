@@ -6,8 +6,8 @@ class ArticleCommentsController < ApplicationController
         @article_comment.user_id = current_user.id
         @article_comment.article_id = @article.id
         if @article_comment.save
+           @article_comment = ArticleComment.new
         else
-            render "articles/show"
         end
     end
 

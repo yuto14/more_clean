@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
     end
 
     def index
-        @articles = Article.all
+        @articles = Article.all.order(id: "DESC")
     end
 
     def show

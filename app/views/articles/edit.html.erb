@@ -1,15 +1,10 @@
 <h3>記事を編集する</h3>
 
-<% if @article.errors.any? %>
-  <% @article.errors.full_messages.each do |message| %>
-    <div class="row">
-      <%= message %>
-    </div>
-  <% end %>
-<% end %>
-
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
+
+    <%= render "layouts/error_messages", model: @article %>
+
     <%= form_for(@article) do |f| %>
       
       <div class="form-group">

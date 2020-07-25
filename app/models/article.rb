@@ -6,7 +6,8 @@ class Article < ApplicationRecord
     has_many :article_comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
 
-    validates :title, :text,   presence: true
+    validates :text,  length: { in: 1..3000 }
+    validates :title, length: { in: 1..50 }
 
     acts_as_taggable
 
