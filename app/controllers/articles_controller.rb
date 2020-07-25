@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+    before_action :correct_article_user, only:[:edit, :update]
+
     def top
         render layout: "layout_top"
     end
@@ -61,4 +63,14 @@ class ArticlesController < ApplicationController
         params.require(:article).permit(:title, :article_image, :text, :tag_list)
     end
 
+    def correct_article_user
+        if user_signed_in?
+          article = Article.find(params[:id])
+          unless article.user == current_user
+            redirect_to root_path
+          end
+        else
+            redirect_to root_path
+        end
+    end
 end
