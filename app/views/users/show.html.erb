@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-xs-3">
+  <h3 class="form-group">ユーザー情報</h3>
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr class="text-center">
+          <td colspan="2"><%= attachment_image_tag @user, :profile_image, format: "jpeg", fallback: "l_e_others_476.jpg", size: "100x100" %></td>
+        </tr>
+        <tr>
+          <td>地域</td>
+          <td><%= @user.address %></td>
+        </tr>
+        <tr>
+          <td colspan="2">紹介文<br>
+          <% if @user.introduction.present? %>
+            <%= safe_join(@user.introduction.split("\n"), tag(:br)) %>
+          <% end %></td>
+        </tr>
+        <% if @user == current_user %>
+          <tr class="text-center"> 
+            <td colspan="2"><%= link_to "編集する", edit_user_path, class: "btn btn-default" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-xs-9">
+    <h3><%= @user.name %> の記事一覧</h3>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <th></th>
+            <th>タイトル</th>
+            <th>投稿日</th>
+            <th>タグ</th>
+            <th class="th-comment">コメント数</th>
+            <th class="th-favorite">いいね数</th>
+          </thead>
+          <tbody>
+            <% @articles.each do |article| %>
+              <tr>
+                <td class="text-center"><p><%= attachment_image_tag article, :article_image, format: "jpeg", size: "80x80" %></p></td>
+                <td><p><%= link_to "#{article.title.truncate(30)}", article_path(article) %><p></td>
+                <td><p><%= article.created_at.strftime("%y/%m/%d") %>
+                <td><p><% article.tag_list.each do |tag_list| %>
+                         <span class="label label-info"><%= link_to "#{tag_list.truncate(10)}", tag_articles_path(tag_name: tag_list) %></span>
+                        <% end %></p></td>
+                <td><p class="td-comment"><%= article.article_comments.count %></p></td>
+                <td><p class="td-favorite"><%= article.favorites.count %></p></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

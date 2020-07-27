@@ -1,0 +1,3 @@
+$('#comments-area').html("<%= j(render "layouts/comments", article: @article) %>");
+$('#comment-error').html("<%= j(render "layouts/error_messages", model: @article_comment) %>");
+$('#comment-area').html("<%= j(render "layouts/comment_area", article: @article, article_comment: @article_comment) %>");

@@ -1,0 +1,57 @@
+<h3>記事詳細</h3>
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1 text-center">
+    
+    <div class="show-title">
+      <h3>タイトル ： <%= @article.title %></h3>
+      <p> 投稿者 ： <%= @article.user.name %></p>
+      <p> 作成日 ： <%= @article.created_at.strftime("%Y/%m/%d") %></p>
+    </div>
+
+    <!-- いいね数 -->
+    <div id="favorite-count">
+      <%= render "layouts/favorite_count", article: @article %>
+    </div>
+
+    <p><%= attachment_image_tag @article, :article_image, format: "jpeg", fallback: "l_e_others_470.jpg", size: "300x300" %></p>
+    
+    <p> <% @article.tag_list.each do |tag_list| %>
+          <span class="label label-info"><%= link_to "#{tag_list}", tag_articles_path(tag_name: tag_list) %></span>
+        <% end %>
+    </p>
+
+    <p class="article-text"><%= safe_join(@article.text.split("\n"), tag(:br)) %></p>
+
+    <!-- いいねする、いいね解除ボタン -->
+    <div id="favorite">
+      <%= render "layouts/favorite", article: @article %>
+    </div>
+
+    <% if @article.user == current_user %>
+      <%= link_to "編集する", edit_article_path(@article), class: "btn btn-default" %>
+      <%= link_to "削除する", article_path(@article), class: "btn btn-default ", method: :delete, data: {confirm: "本当に削除してもよいですか？"} %>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="row col-xs-10 col-xs-offset-1">
+  <h3>コメント</h3>
+  
+  <!--　コメントのエラーメッセージ -->
+  <div id="comment-error">
+  </div>
+
+  <!-- コメント一覧 -->
+  <div class="row col-xs-10 col-xs-offset-1">
+    <div id="comments-area">
+      <%= render "layouts/comments", article: @article%>
+    </div>
+  </div>
+
+  <!-- コメント投稿　-->
+  <div id="comment-area">
+    <%= render "layouts/comment_area", article: @article, article_comment: @article_comment %>
+  </div>
+</div>

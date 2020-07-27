@@ -1,0 +1,23 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+tr > td  {
+    height: 100px;
+}
+
+td > p {
+    line-height: 100px;
+}
+
+.article-text, .show-title {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.comment {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
