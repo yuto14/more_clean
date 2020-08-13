@@ -1,4 +1,7 @@
 <h3><span class="label label-info"><%= params[:tag_name]%></span> がついた記事</h3>
-<div class="row col-xs-10 col-xs-offset-1">
-  <%= render "article_table", articles: @tag_articles %>
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <%= render "article_table", articles: @tag_articles %>
+  </div>
 </div>
