@@ -11,7 +11,6 @@
 
   <body>
     <header class="container-fluid">
-      <div class="row col-xs-12">
         <nav class="nav navbar-nav navbar-left">
           <h1 class="header-title"><%= link_to "more clean", root_path %></h1>
         </nav>
@@ -31,11 +30,13 @@
           </ul>
         </nav>
       </div>
-      <div class="row col-xs-12 text-right">
-        <%= search_form_for(@search, url: articles_path ) do |f| %>
-          <%= f.text_field :title_cont, placeholder: "タイトルを入力..." %>
-          <%= f.submit "検索する", class: "btn btn-default btn-xs" %>
-        <% end %>
+      <div class="row">
+        <div class="col-xs-12 text-right">
+          <%= search_form_for(@search, url: articles_path ) do |f| %>
+            <%= f.text_field :title_cont, placeholder: "タイトルを入力..." %>
+            <%= f.submit "検索する", class: "btn btn-default btn-xs" %>
+          <% end %>
+        </div>
       </div>
     </header>
     
