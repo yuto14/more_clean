@@ -21,15 +21,15 @@
 <https://docs.google.com/spreadsheets/d/15TszOGhLgU5kp6C718BLEPvykAQUR9sft1ZvGDrRnJU/edit#gid=0>
 
 ### 開発環境
-- OS
-　 Linux(SentOS)
-- 言語
-　 HTML、CSS、Ruby、JavaScript
-- フレームワーク
-　 Ruby on Rails
-　 Bootstrap
-- インフラ
-　 AWS(EC2、RDS、EIP、Route53)
-- その他ツール
+- OS  
+　 Linux(SentOS)  
+- 言語  
+　 HTML、CSS、Ruby、JavaScript  
+- フレームワーク  
+　 Ruby on Rails  
+　 Bootstrap  
+- インフラ  
+　 AWS(EC2、RDS、EIP、Route53)  
+- その他ツール  
 　 Vagrant、VirtualBox
  
